@@ -239,7 +239,7 @@
   
   .radio{
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     justify-content: space-around;
     margin-right: 20px;
   }
