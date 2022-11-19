@@ -138,7 +138,7 @@
     transition: 0.5s;
   }
   
-  .button-company.facebook{
+  .button-company--facebook{
     background-color: #255A9B;
     margin-bottom: 50px;
   
@@ -147,11 +147,11 @@
   .button-company__logo{
     position: absolute;
     top: 8px;
-      left: 9px;
-      width: 18px;
-      height: 18px;
+    left: 9px;
+    width: 18px;
+    height: 18px;
   }
-  .button-company.linkedin{
+  .button-company--linkedin{
     background-color: #0076B6 ;
   }
   
@@ -196,19 +196,18 @@
   
   .field-container{
     display: flex;
-    margin-bottom: 40px;
   }
   
   .field{
     position: relative;
     width: 225px;
     height: 50px;
-    border-color: red;
     border: 1px solid #EEEEEE;
     color: #AFAFAF;
     margin-right: 50px;
     padding-left: 10px;
     padding-top: 2px;
+    margin-bottom: 40px;
   }
   
   .field__entry{
@@ -245,11 +244,11 @@
     margin-right: 20px;
   }
   
-  .radio input{
+  .radio__item--write{
     margin-right: 5px;
   }
   
-  .radio label{
+  .radio__item--name{
     font-size: 13px;
     font-weight: 600;
   }
