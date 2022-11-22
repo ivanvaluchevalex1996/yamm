@@ -51,6 +51,7 @@
   
   button{
     border: none;
+    color:#9FD468
   }
   
   .container{
@@ -83,19 +84,17 @@
     left:30px;
   }
   
-  .content{
+  .content-info{
     width: 50%;
     background-color: #ffffff;
-  }
-  
-  .box{
-    margin-left: 50px;
-    margin-top: 40px;
+    padding-left: 50px;
+    padding-top: 40px;
   }
   
   
   .caption__title-more{
     margin-bottom: 10px;
+    margin-right: 10px;
     font-size: 22px;
     font-weight: 600;
   }
@@ -104,18 +103,22 @@
     margin-bottom: 40px;
     font-size: 16px;
     color: #7B8A92;
+    margin-right: 10px;
   
   }
   .caption__title-less{
     margin-bottom: 10px;
     font-size: 18px;
     font-weight: 600;
+    margin-right: 10px;
+
   }
   
   .caption__clarification-less{
     margin-bottom: 30px;
     font-size: 14px;
     color: #7B8A92;
+    margin-right: 10px;
   
   }
   
@@ -194,6 +197,10 @@
   
   }
   
+  .information{
+    position: relative;
+  }
+
   .field-container{
     display: flex;
   }
@@ -227,7 +234,6 @@
     width: 4px;
     height: 50px;
     background: #3698FB;
-    /* border-radius: 0px 4px 4px 0px; */
     display: none;
     z-index: 10;
   }
@@ -235,6 +241,12 @@
   .field:hover::before{
     display: block;
   }
+  /*убрать стрелки с тайп намбер  */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0; 
+}
   
   
   .radio{
@@ -244,11 +256,9 @@
     margin-right: 20px;
   }
   
-  .radio__item--write{
-    margin-right: 5px;
-  }
   
-  .radio__item--name{
+  
+  .radio label{
     font-size: 13px;
     font-weight: 600;
   }
@@ -262,17 +272,90 @@
     width: 13px !important;
     height: 13px !important;
   }
+
+  /*стили для радиокнопок  */
+
   
-  .quad{
-    width:190px;
-    height:65px;
+  .real-radio-btn {
+    /* Скрываем реальную радио кнопку*/
+    width: 0;
+    height: 0;
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+  
+  
+  .custom-radio-btn {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    border: 2px solid #d9d6da;
+    border-radius: 50%;
+    vertical-align: text-top;
+    margin-right: 5px;
+  }
+
+  .custom-radio-btn::after {
+    content: "";
+  
+    /* Рисуем внешний круг */
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #ffffff;
+    border-radius: 50%;
+  
+    /* Выравниваем по центру */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.2s ease-in;
+    z-index: 3;
+  }
+  
+  .custom-radio-btn::before {
+    content: "";
+  
+    /* Рисуем внешний круг */
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #3698FB;
+    border-radius: 50%;
+  
+    /* Выравниваем по центру */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.2s ease-in;
+    z-index: 2;
+  }
+
+  .real-radio-btn:checked + .custom-radio-btn::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .real-radio-btn:checked + .custom-radio-btn::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  /*  */
+
+  
+  .wrap{
+    width: 190px;
+    height: 70px;
     border: 1px solid #AFAFAF;
-    padding: 3px;
     box-shadow: 0px 0px 12px 5px rgba(34, 60, 80, 0.21);
     margin-bottom: 25px;
   }
   
-  .quad__text{
+  .wrap__text{
+    padding: 5px 10px 8px 8px;
     font-size: 12px;
     color: #958f8f;
   }
@@ -281,6 +364,7 @@
     color: #7B8A92;
     font-size: 12px;
     margin-bottom: 45px;
+    margin-right: 20px;
   }
   
   .contract input {
@@ -300,14 +384,118 @@
     box-shadow: 0px 0px 12px 5px rgba(34, 60, 80, 0.21);
     transition-duration: 0.5s;
   }
-  
-  
-  .asd{
-    color: #2A4A5C;
-    color: #3698FB;
-    color: #7B8A92;
-    color: #96A5B1;
-    color: #AFAFAF;
-    color: #EEEEEE;
-    color: #AFAFAF;
+
+
+  @media screen and (max-width: 650px) {
+    .image{
+      display: none;
+    }
+
+    .content-info {
+      width: 100%;
+      text-align: center;
   }
+
+    .buttons {
+      display: block;
+      position: relative;
+      left: 18px;
+  }
+
+    .field{
+      text-align: initial;
+    }
+
+    .field-container{
+        display: inline-block;
+        position: relative;
+        left: 17px;
+    }
+
+    .wrap{
+      display: inline-block;
+    }
+
+
+    .create {
+      position: relative;
+      bottom: 20px;
+  }
+
+
+  
+  }
+
+
+  @media screen and (max-width: 900px) {
+
+    .radio{
+      flex-direction: column;
+    }
+    .radio label{
+     padding: 10px;
+    }
+
+    .buttons{
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+    
+    .block{
+      display: none;
+    }
+
+    .field-container {
+      flex-direction: column;
+  }
+
+  .image{
+    height: 913px;
+  }
+  
+   
+    .caption__title-more {
+      font-size: 18px;
+  }
+
+  .caption__clarification-more {
+    font-size: 14px;
+
+  }
+
+  .button-company--facebook {
+    margin-bottom: 10px;
+}
+
+.field {
+  margin-bottom: 10px;
+}
+
+
+  }
+
+  @media screen and (max-width: 1000px) {
+    .button-company__logo {
+      display: none;
+  }
+
+  .block {
+    margin-left: 10px;
+}
+  }
+
+  @media screen and (max-width: 1100px) {
+    .button-company {
+      font-size: 12px;
+  }
+
+  .button-company__logo {
+    position: absolute;
+    top: 11px;
+    left: 6px;
+    width: 14px;
+    height: 14px;
+}
+
+  }
+  
